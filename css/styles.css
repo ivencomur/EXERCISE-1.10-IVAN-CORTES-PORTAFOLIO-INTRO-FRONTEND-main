@@ -1,0 +1,367 @@
+:root {
+  --primary-color: #20504b; /* Dark Teal */
+  --primary-hover-color: #1a403c; /* Darker Teal for hover */
+  --secondary-color: #f4f4f4; /* Lighter Gray for background */
+  --text-color: #333; /* Dark Gray */
+  --link-color: #007bff;
+  --link-hover-color: #0056b3;
+  --button-bg-color: var(--primary-color);
+  --button-text-color: #ffffff;
+  
+  /* Pokedex-style colors for the grid */
+  --grid-item-bg-color: #007bff; /* Pokedex Blue */
+  --grid-item-text-color: #ffffff; /* White */
+  
+  /* Pokedex Orange for links */
+  --pokedex-orange: #FF8C00; /* Vibrant Orange */
+  --pokedex-orange-hover: #CC7000; /* Darker Orange for hover */
+
+  /* Alternate (White/Blue) colors */
+  --alt-grid-item-bg-color: #ffffff;
+  --alt-grid-item-text-color: #0056b3;
+}
+
+body {
+    font-family: 'Lato', sans-serif; 
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: 2px solid transparent; /* Added for smooth hover transition */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.button:hover, .button:focus {
+    background-color: var(--primary-hover-color);
+    cursor: pointer;
+}
+
+/* Centered Header Styles */
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.page-header__item {
+    margin-bottom: 10px;
+}
+
+.page-header .navigation-list a {
+    color: #fff;
+}
+
+.navigation-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.navigation-list li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.navigation-list__item--active {
+    text-decoration: underline;
+}
+
+/* Symmetrical & Adaptive Grid Styles */
+.work-main {
+    padding: 20px 0;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Base style for all grid items */
+.grid > [class^="grid__item"] {
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+}
+
+.grid > [class^="grid__item"] p {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+
+.grid > [class^="grid__item"]:hover {
+    transform: translateY(-5px);
+}
+
+/* Default Theme: Blue Background, White Text */
+.grid__item__1, .grid__item__3, .grid__item__5 {
+    background-color: var(--grid-item-bg-color);
+    color: var(--grid-item-text-color);
+}
+
+.grid__item__1 h2, .grid__item__3 h2, .grid__item__5 h2 {
+    color: var(--grid-item-text-color);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 10px;
+}
+
+.grid__item__1 a, .grid__item__3 a, .grid__item__5 a {
+    color: var(--pokedex-orange);
+    font-weight: bold;
+}
+
+.grid__item__1 a:hover, .grid__item__3 a:hover, .grid__item__5 a:hover {
+    color: var(--pokedex-orange-hover);
+}
+
+/* Alternate Theme: White Background, Blue Text */
+.grid__item__2, .grid__item__4, .grid__item__6 {
+    background-color: var(--alt-grid-item-bg-color);
+    color: var(--text-color);
+}
+
+.grid__item__2 h2, .grid__item__4 h2, .grid__item__6 h2 {
+    color: var(--alt-grid-item-text-color);
+    border-bottom: 2px solid rgba(0, 86, 179, 0.2);
+    padding-bottom: 10px;
+}
+
+.grid__item__2 a, .grid__item__4 a, .grid__item__6 a {
+    color: var(--pokedex-orange);
+    font-weight: bold;
+}
+
+.grid__item__2 a:hover, .grid__item__4 a:hover, .grid__item__6 a:hover {
+    color: var(--pokedex-orange-hover);
+}
+
+.page-footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.page-footer a {
+    color: var(--pokedex-orange);
+    font-weight: bold;
+}
+
+.page-footer a:hover {
+    color: var(--pokedex-orange-hover);
+}
+
+
+.social-media a {
+    margin: 0 10px;
+}
+
+/* Homepage and About Page Styles */
+.home-main, .about-main, .contact-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 250px);
+}
+
+.hero, .about-container, .contact-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.about-container h1 {
+    color: var(--alt-grid-item-text-color);
+    font-size: 2.2em;
+}
+
+
+.hero__portrait, .about__portrait {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.about__image-container {
+    margin-top: 30px;
+}
+
+.about__image-container img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.skills-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 80%;
+}
+
+.skill-button {
+    flex-grow: 1;
+    flex-basis: 180px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid var(--grid-item-bg-color);
+}
+
+/* Blue background, white text */
+.skill-button--primary {
+    background-color: var(--grid-item-bg-color);
+    color: var(--grid-item-text-color);
+}
+
+.skill-button--primary:hover {
+    background-color: var(--alt-grid-item-text-color);
+    border-color: var(--alt-grid-item-text-color);
+    color: var(--grid-item-text-color);
+}
+
+/* White background, blue text */
+.skill-button--alt {
+    background-color: var(--alt-grid-item-bg-color);
+    color: var(--alt-grid-item-text-color);
+}
+
+.skill-button--alt:hover {
+    background-color: var(--secondary-color);
+    color: var(--alt-grid-item-text-color);
+}
+
+/* --- Corrected CV Button Style --- */
+.button--cv {
+    margin-top: 20px;
+    background-color: var(--primary-color); /* Dark Teal */
+    color: var(--button-text-color); /* White */
+    border-color: var(--primary-color);
+}
+
+.button--cv:hover {
+    background-color: var(--alt-grid-item-bg-color); /* White */
+    color: var(--alt-grid-item-text-color); /* Dark Blue */
+    border-color: var(--alt-grid-item-text-color);
+}
+/* --- End of Corrected Style --- */
+
+.contact-details {
+    margin: 20px 0;
+    line-height: 1.8;
+}
+
+.contact-details p {
+    margin: 5px 0;
+}
+
+.nav-name {
+    color: var(--pokedex-orange);
+    font-weight: bold;
+}
+
+/* Media Queries for Symmetrical Layout */
+/* Default: 3 columns (for screens > 992px) */
+.grid > [class^="grid__item"] {
+    width: calc(33.333% - 20px);
+}
+
+/* Tablet: 2 columns (for screens <= 992px) */
+@media all and (max-width: 992px) {
+    .grid > [class^="grid__item"] {
+        width: calc(50% - 20px);
+    }
+}
+
+/* Mobile: 1 column (for screens <= 600px) */
+@media all and (max-width: 600px) {
+    .grid > [class^="grid__item"] {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* --- Media Queries for Skill Buttons --- */
+/* Default: 3 columns (for screens > 768px) */
+.skill-button {
+    width: calc(33.333% - 10px);
+}
+
+/* Tablet: 2 columns (for screens <= 768px) */
+@media all and (max-width: 768px) {
+    .skill-button {
+        width: calc(50% - 10px);
+    }
+}
+
+/* Mobile: 1 column (for screens <= 500px) */
+@media all and (max-width: 500px) {
+    .skill-button {
+        width: 100%;
+    }
+}
