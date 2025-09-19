@@ -8,13 +8,13 @@
   --button-bg-color: var(--primary-color);
   --button-text-color: #ffffff;
 
-  /* Pokedex-style colors for the grid */
+  /* Customized-style colors for the grid */
   --grid-item-bg-color: #2c3e50; /* New Dark Slate Blue */
   --grid-item-text-color: #ffffff; /* White */
 
-  /* Pokedex Orange for links */
-  --pokedex-orange: #ff8c00; /* Vibrant Orange */
-  --pokedex-orange-hover: #cc7000; /* Darker Orange for hover */
+  /* Customized Orange for links */
+  --customized-orange: #ff8c00; /* Vibrant Orange */
+  --customized-orange-hover: #cc7000; /* Darker Orange for hover */
 
   /* Alternate (White/Blue) colors */
   --alt-grid-item-bg-color: #ffffff;
@@ -24,10 +24,10 @@
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--text-color);
-  background-color: var(--secondary-color);
+  background-color: #d9e1e5;
 }
 
 h1,
@@ -45,7 +45,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.4em;
+  font-size: 1.8em;
   font-weight: 700;
 }
 
@@ -70,7 +70,8 @@ a:focus {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   font-weight: 700;
-  padding: 10px 20px;
+  font-size: 1.1em;
+  padding: 12px 24px;
   border-radius: 3px;
   border: 2px solid transparent;
   transition: background-color 0.2s, color 0.2s;
@@ -105,15 +106,31 @@ a:focus {
   padding: 0;
   margin: 0;
   text-align: center;
+  font-size: 1.2em;
 }
 
 .navigation-list li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 15px;
 }
 
-.navigation-list__item--active {
+/* Ensure navigation links in header are styled uniformly */
+.page-header .navigation-list a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.page-header .navigation-list a:hover,
+.page-header .navigation-list a:focus {
   text-decoration: underline;
+}
+
+/* Make ribbon images responsive width but fixed height */
+.navigation__logo {
+  width: 100%;
+  height: 10px;
+  object-fit: cover;
+  display: block;
 }
 
 /* --- Smaller, Symmetrical & Adaptive Grid Styles --- */
@@ -173,7 +190,7 @@ a:focus {
 .grid__item__1 a,
 .grid__item__3 a,
 .grid__item__5 a {
-  color: var(--pokedex-orange);
+  color: var(--customized-orange);
   font-weight: bold;
   font-size: 0.8em;
 }
@@ -181,7 +198,7 @@ a:focus {
 .grid__item__1 a:hover,
 .grid__item__3 a:hover,
 .grid__item__5 a:hover {
-  color: var(--pokedex-orange-hover);
+  color: var(--customized-orange-hover);
 }
 
 /* Alternate Theme: White Background, Blue Text */
@@ -203,7 +220,7 @@ a:focus {
 .grid__item__2 a,
 .grid__item__4 a,
 .grid__item__6 a {
-  color: var(--pokedex-orange);
+  color: var(--customized-orange);
   font-weight: bold;
   font-size: 0.8em;
 }
@@ -211,7 +228,7 @@ a:focus {
 .grid__item__2 a:hover,
 .grid__item__4 a:hover,
 .grid__item__6 a:hover {
-  color: var(--pokedex-orange-hover);
+  color: var(--customized-orange-hover);
 }
 /* --- End of Grid Item Styles --- */
 
@@ -223,15 +240,16 @@ a:focus {
   padding: 20px;
   background-color: var(--primary-color);
   color: #fff;
+  font-size: 1.1em;
 }
 
 .page-footer a {
-  color: var(--pokedex-orange);
+  color: var(--customized-orange);
   font-weight: bold;
 }
 
 .page-footer a:hover {
-  color: var(--pokedex-orange-hover);
+  color: var(--customized-orange-hover);
 }
 
 .social-media a {
@@ -261,18 +279,40 @@ a:focus {
   text-align: center;
 }
 
-.about-container h1 {
-  color: var(--alt-grid-item-text-color);
+/* Apply consistent blue heading color across all pages */
+.hero h1,
+.about-container h1,
+.contact-container h1,
+.work-main h1 {
+  color: var(--alt-grid-item-text-color); /* Blue color: #0056b3 */
   font-size: 2.2em;
 }
 
-.hero__portrait,
-.about__portrait {
+.hero__portrait {
   width: 290px;
   height: 100px;
   border-radius: 2%;
   object-fit: cover;
   margin-bottom: 20px;
+}
+
+.about__portrait {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.about__profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about__image-container {
@@ -297,10 +337,11 @@ a:focus {
 
 .skill-button {
   flex-grow: 1;
-  flex-basis: 180px;
+  flex-basis: 120px; /* Reduced from 180px */
   text-align: center;
   font-weight: bold;
   border: 2px solid var(--grid-item-bg-color);
+  max-width: 140px; /* Add maximum width constraint */
 }
 
 /* Blue background, white text */
@@ -349,20 +390,20 @@ a:focus {
 }
 
 .nav-name {
-  color: var(--pokedex-orange);
+  color: var(--customized-orange);
   font-weight: bold;
 }
 
 /* Media Queries for Symmetrical Layout */
 /* Default: 3 columns (for screens > 992px) */
 .grid > [class^="grid__item"] {
-  width: calc(33.333% - 12px);
+  width: calc(21.667% - 12px);
 }
 
 /* Tablet: 2 columns (for screens <= 992px) */
 @media all and (max-width: 992px) {
   .grid > [class^="grid__item"] {
-    width: calc(50% - 12px);
+    width: calc(32.5% - 12px);
   }
 }
 
@@ -385,6 +426,7 @@ a:focus {
 @media all and (max-width: 768px) {
   .skill-button {
     width: calc(50% - 10px);
+    max-width: none; /* Remove max-width constraint on smaller screens */
   }
 }
 
@@ -392,5 +434,6 @@ a:focus {
 @media all and (max-width: 500px) {
   .skill-button {
     width: 100%;
+    max-width: none; /* Remove max-width constraint on mobile */
   }
 }
