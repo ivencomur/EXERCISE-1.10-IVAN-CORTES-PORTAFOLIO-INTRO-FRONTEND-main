@@ -437,3 +437,11 @@ a:focus {
     max-width: none; /* Remove max-width constraint on mobile */
   }
 }
+
+.project-screenshot {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    border: 1px solid var(--secondary-color);
+}
