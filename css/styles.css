@@ -13,8 +13,9 @@
   --grid-item-text-color: #ffffff; /* White */
 
   /* Customized Orange for links */
-  --customized-orange: #ff8c00; /* Vibrant Orange */
-  --customized-orange-hover: #cc7000; /* Darker Orange for hover */
+  --customized-orange-light-bg: #b46100; /* Accessible orange on light backgrounds */
+  --customized-orange-dark-bg: #ffa061; /* Accessible orange on dark backgrounds */
+  --customized-orange-hover: #9c5400; /* Darker Orange for hover */
 
   /* Alternate (White/Blue) colors */
   --alt-grid-item-bg-color: #ffffff;
@@ -24,8 +25,8 @@
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-color);
   background-color: #d9e1e5;
 }
@@ -34,35 +35,46 @@ h1,
 h2,
 h3,
 h4 {
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 1.8em;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 h2 {
-  font-size: 1.8em;
+  font-size: 1.3em;
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.1em;
   font-weight: 700;
 }
 
 a {
   color: var(--link-color);
   text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 
 a:hover,
 a:focus {
-  color: var(--link-hover-color);
-  text-decoration: underline;
+  background-color: var(--alt-grid-item-text-color);
+  color: var(--grid-item-text-color) !important;
+  text-decoration: none;
+}
+
+/* Apply scaling to links that don't trigger the preview */
+a:not(.live-link):hover,
+a:not(.live-link):focus {
+    transform: scale(1.5);
 }
 
 .button {
@@ -70,8 +82,8 @@ a:focus {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   font-weight: 700;
-  font-size: 1.1em;
-  padding: 12px 24px;
+  font-size: 1em;
+  padding: 10px 20px;
   border-radius: 3px;
   border: 2px solid transparent;
   transition: background-color 0.2s, color 0.2s;
@@ -81,6 +93,7 @@ a:focus {
 .button:focus {
   background-color: var(--primary-hover-color);
   cursor: pointer;
+  transform: scale(1.05); /* Slight scale for buttons */
 }
 
 /* Centered Header Styles */
@@ -88,13 +101,13 @@ a:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
   background-color: var(--primary-color);
   color: #fff;
 }
 
 .page-header__item {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .page-header .navigation-list a {
@@ -106,12 +119,12 @@ a:focus {
   padding: 0;
   margin: 0;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .navigation-list li {
   display: inline-block;
-  margin: 0 15px;
+  margin: 0 10px;
 }
 
 /* Ensure navigation links in header are styled uniformly */
@@ -120,55 +133,58 @@ a:focus {
   text-decoration: none;
 }
 
+/* Override general link hover for header */
 .page-header .navigation-list a:hover,
 .page-header .navigation-list a:focus {
   text-decoration: underline;
+  background-color: transparent;
+  color: #fff !important;
 }
 
 /* Make ribbon images responsive width but fixed height */
 .navigation__logo {
   width: 100%;
-  height: 10px;
+  height: 8px;
   object-fit: cover;
   display: block;
 }
 
 /* --- Smaller, Symmetrical & Adaptive Grid Styles --- */
 .work-main {
-  padding: 15px 0;
+  padding: 10px 0;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 900px; /* Further reduced max-width */
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 5px;
 }
 
 /* Base style for all grid items */
 .grid > [class^="grid__item"] {
-  margin: 4px; /* Further reduced margin */
-  padding: 8px 10px; /* Further reduced padding */
-  border-radius: 5px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin: 2px;
+  padding: 3px 4px;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease-in-out;
   flex-shrink: 0;
 }
 
 .grid > [class^="grid__item"] h2 {
-  font-size: 1em; /* Further reduced heading */
-  margin-bottom: 4px;
+  font-size: 0.8em;
+  margin-bottom: 3px;
 }
 
 .grid > [class^="grid__item"] p {
-  font-size: 0.7em; /* Further reduced paragraph text */
-  line-height: 1.3;
+  font-size: 0.5em;
+  line-height: 1.2;
 }
 
 .grid > [class^="grid__item"]:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* Default Theme: Dark Blue Background, White Text */
@@ -184,22 +200,17 @@ a:focus {
 .grid__item__5 h2 {
   color: var(--grid-item-text-color);
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 4px;
+  padding-bottom: 3px;
 }
 
 .grid__item__1 a,
 .grid__item__3 a,
 .grid__item__5 a {
-  color: var(--customized-orange);
+  color: var(--customized-orange-dark-bg);
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
-.grid__item__1 a:hover,
-.grid__item__3 a:hover,
-.grid__item__5 a:hover {
-  color: var(--customized-orange-hover);
-}
 
 /* Alternate Theme: White Background, Blue Text */
 .grid__item__2,
@@ -214,22 +225,18 @@ a:focus {
 .grid__item__6 h2 {
   color: var(--alt-grid-item-text-color);
   border-bottom: 1px solid rgba(0, 86, 179, 0.2);
-  padding-bottom: 4px;
+  padding-bottom: 3px;
 }
 
 .grid__item__2 a,
 .grid__item__4 a,
 .grid__item__6 a {
-  color: var(--customized-orange);
+  color: var(--customized-orange-light-bg);
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
-.grid__item__2 a:hover,
-.grid__item__4 a:hover,
-.grid__item__6 a:hover {
-  color: var(--customized-orange-hover);
-}
+
 /* --- End of Grid Item Styles --- */
 
 .page-footer {
@@ -237,23 +244,31 @@ a:focus {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   background-color: var(--primary-color);
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1em;
+}
+
+.page-footer p,
+.page-footer a {
+  margin: 5px 0;
 }
 
 .page-footer a {
-  color: var(--customized-orange);
+  color: var(--customized-orange-dark-bg);
   font-weight: bold;
 }
 
-.page-footer a:hover {
-  color: var(--customized-orange-hover);
+/* Override general link hover for footer */
+.page-footer a:hover,
+.page-footer a:focus {
+    background-color: transparent;
+    color: var(--customized-orange-hover) !important;
 }
 
 .social-media a {
-  margin: 0 10px;
+  margin: 0 8px;
 }
 
 /* Homepage and About Page Styles */
@@ -263,18 +278,18 @@ a:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  min-height: calc(100vh - 250px);
+  padding: 30px 15px;
+  min-height: calc(100vh - 200px);
 }
 
 .hero,
 .about-container,
 .contact-container {
   background-color: #ffffff;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
   width: 100%;
   text-align: center;
 }
@@ -285,42 +300,42 @@ a:focus {
 .contact-container h1,
 .work-main h1 {
   color: var(--alt-grid-item-text-color); /* Blue color: #0056b3 */
-  font-size: 2.2em;
+  font-size: 1.6em;
 }
 
 .hero__portrait {
-  width: 290px;
-  height: 100px;
+  width: 250px;
+  height: 80px;
   border-radius: 2%;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .about__portrait {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .about__profile-image {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .about__image-container {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .about__image-container img {
-  max-width: 50%;
+  max-width: 40%;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -330,18 +345,18 @@ a:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin: 20px auto;
-  max-width: 80%;
+  gap: 8px;
+  margin: 15px auto;
+  max-width: 70%;
 }
 
 .skill-button {
   flex-grow: 1;
-  flex-basis: 120px; /* Reduced from 180px */
+  flex-basis: 100px;
   text-align: center;
   font-weight: bold;
-  border: 2px solid var(--grid-item-bg-color);
-  max-width: 140px; /* Add maximum width constraint */
+  border: 1px solid var(--grid-item-bg-color);
+  max-width: 120px;
 }
 
 /* Blue background, white text */
@@ -368,49 +383,50 @@ a:focus {
 }
 
 .button--cv {
-  margin-top: 20px;
+  margin-top: 15px;
   background-color: var(--primary-color);
   color: var(--button-text-color);
   border-color: var(--primary-color);
 }
 
-.button--cv:hover {
-  background-color: var(--alt-grid-item-bg-color);
-  color: var(--alt-grid-item-text-color);
+.button--cv:hover, .button--cv:focus {
+  background-color: var(--alt-grid-item-text-color);
+  color: var(--grid-item-text-color) !important;
   border-color: var(--alt-grid-item-text-color);
+  transform: scale(1.1); /* smaller scale for buttons */
 }
 
 .contact-details {
-  margin: 20px 0;
-  line-height: 1.8;
+  margin: 15px 0;
+  line-height: 1.6;
 }
 
 .contact-details p {
-  margin: 5px 0;
+  margin: 4px 0;
 }
 
 .nav-name {
-  color: var(--customized-orange);
+  color: var(--customized-orange-dark-bg);
   font-weight: bold;
 }
 
 /* Media Queries for Symmetrical Layout */
 /* Default: 3 columns (for screens > 992px) */
 .grid > [class^="grid__item"] {
-  width: calc(21.667% - 12px);
+  width: calc(20% - 10px);
 }
 
 /* Tablet: 2 columns (for screens <= 992px) */
 @media all and (max-width: 992px) {
   .grid > [class^="grid__item"] {
-    width: calc(32.5% - 12px);
+    width: calc(30% - 10px);
   }
 }
 
 /* Mobile: 1 column (for screens <= 600px) */
 @media all and (max-width: 600px) {
   .grid > [class^="grid__item"] {
-    width: 100%;
+    width: 90%;
     margin-left: 0;
     margin-right: 0;
   }
@@ -419,13 +435,13 @@ a:focus {
 /* Media Queries for Skill Buttons */
 /* Default: 3 columns (for screens > 768px) */
 .skill-button {
-  width: calc(33.333% - 10px);
+  width: calc(30% - 8px);
 }
 
 /* Tablet: 2 columns (for screens <= 768px) */
 @media all and (max-width: 768px) {
   .skill-button {
-    width: calc(50% - 10px);
+    width: calc(45% - 8px);
     max-width: none; /* Remove max-width constraint on smaller screens */
   }
 }
@@ -433,7 +449,7 @@ a:focus {
 /* Mobile: 1 column (for screens <= 500px) */
 @media all and (max-width: 500px) {
   .skill-button {
-    width: 100%;
+    width: 90%;
     max-width: none; /* Remove max-width constraint on mobile */
   }
 }
@@ -441,7 +457,24 @@ a:focus {
 .project-screenshot {
     width: 100%;
     height: auto;
-    border-radius: 5px;
-    margin-bottom: 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
     border: 1px solid var(--secondary-color);
 }
+
+#peek-preview {
+  display: none;
+  position: fixed;
+  width: 312.5px; /* 25% larger than 250px */
+  height: 250px; /* 25% larger than 200px */
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 10px; /* Rounded corners for a bubble look */
+  overflow: hidden; /* Hide iframe overflow */
+  top: 33.33%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
