@@ -19,27 +19,22 @@
       <img
         src="img/RIBBON 2.png"
         alt="RIBBON with logo colors"
-        width="1670"
-        height="10"
         class="page-header__item navigation__logo"
       />
-
       <nav class="main-navigation page-header__item">
         <ul role="menubar" class="navigation-list">
           <li role="presentation">
-            <a href="index.html" role="menuitem" class="navigation-list__item"
+            <a
+              href="index.html"
+              role="menuitem"
+              class="navigation-list__item"
               ><span class="nav-name">IECM</span> Portfolio</a
             >
           </li>
           <li role="presentation">
-            <a href="contact.html" role="menuitem" class="navigation-list__item"
-              >Contact <span class="nav-name"></span
-            ></a>
-          </li>
-          <li role="presentation">
             <a href="about.html" role="menuitem" class="navigation-list__item"
-              >About <span class="nav-name"></span
-            ></a>
+              >About <span class="nav-name">IECM</span></a
+            >
           </li>
           <li role="presentation">
             <a href="work.html" role="menuitem" class="navigation-list__item"
@@ -51,8 +46,6 @@
       <img
         src="img/RIBBON 2.png"
         alt="RIBBON with logo colors"
-        width="1670"
-        height="10"
         class="page-header__item navigation__logo"
       />
     </header>
@@ -77,6 +70,7 @@
           ><br />
           <a
             href="https://ivencomur.github.io/1.11_IECM/"
+            class="live-link"
             target="_blank"
             rel="noopener"
             >Live Site</a
@@ -100,6 +94,7 @@
           ><br />
           <a
             href="https://iecm-moviemobs-api.onrender.com/"
+            class="live-link"
             target="_blank"
             rel="noopener"
             >Live API</a
@@ -124,6 +119,7 @@
           ><br />
           <a
             href="https://themoviemobs.netlify.app"
+            class="live-link"
             target="_blank"
             rel="noopener"
             >Live Client</a
@@ -147,6 +143,7 @@
           ><br />
           <a
             href="https://ivans-events.vercel.app/"
+            class="live-link"
             target="_blank"
             rel="noopener"
             >Live Site</a
@@ -171,6 +168,7 @@
           ><br />
           <a
             href="https://iecm-chat-app.onrender.com"
+            class="live-link"
             target="_blank"
             rel="noopener"
             >Live App</a
@@ -204,12 +202,14 @@
           ><br />
           <a
             href="https://iecm-moviemobs-frontend-client-final.onrender.com"
+            class="live-link"
             target="_blank"
             rel="noopener"
             >Live Frontend</a
           ><br />
           <a
             href="https://iecm-moviemobs-api.onrender.com"
+            class="live-link"
             target="_blank"
             rel="noopener"
             >Live Backend</a
@@ -217,18 +217,19 @@
         </div>
       </div>
     </main>
+    <div id="peek-preview">
+        <iframe src="" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
     <footer class="page-footer">
       <img
         src="img/RIBBON 2.png"
         alt="RIBBON with logo colors"
-        width="1670"
-        height="10"
         class="page-header__item navigation__logo"
       />
       <p>Ivan Cortes</p>
       <p>Lawrenceville, GA, USA</p>
-      <p>Tel <a href="tel:+17608******">+17608******</a></p>
-      <a href="mailto:ivancortes@hotmail.com">ivancortes@hotmail.com</a>
+      <p><a href="https://wa.me/14707849822?text=Hello%2C%20I%27d%20like%20to%20chat%20about%20your%20portfolio.">Contact me on WhatsApp</a></p>
+      <p><a href="mailto:ivancortes@hotmail.com?subject=Portfolio Inquiry&body=Please provide your email, WhatsApp number, and a brief subject for our chat.">ivancortes@hotmail.com</a></p>
       <p>Find me on</p>
       <div class="social-media">
         <a href="https://github.com/ivencomur" target="_blank" rel="noopener"
@@ -259,11 +260,49 @@
       <img
         src="img/RIBBON 2.png"
         alt="RIBBON with logo colors"
-        width="1670"
-        height="10"
         class="page-header__item navigation__logo"
       />
     </footer>
     <script src="js/tota11y.min.js"></script>
+    <script>
+        const peekPreview = document.getElementById('peek-preview');
+        const peekIframe = peekPreview.querySelector('iframe');
+        const links = document.querySelectorAll('.grid a.live-link');
+
+        links.forEach(link => {
+            link.addEventListener('mouseover', (e) => {
+                peekIframe.src = e.target.href;
+                
+                const linkRect = e.target.getBoundingClientRect();
+                const previewRect = peekPreview.getBoundingClientRect();
+                const viewWidth = window.innerWidth;
+                const viewHeight = window.innerHeight;
+
+                let top = linkRect.top - previewRect.height / 2 + linkRect.height / 2;
+                let left = linkRect.right + 20;
+
+                if (left + previewRect.width > viewWidth) {
+                    left = linkRect.left - previewRect.width - 20;
+                }
+
+                if (top < 0) {
+                    top = 10;
+                } else if (top + previewRect.height > viewHeight) {
+                    top = viewHeight - previewRect.height - 10;
+                }
+                
+                peekPreview.style.top = `${top}px`;
+                peekPreview.style.left = `${left}px`;
+
+                peekPreview.style.display = 'block';
+            });
+
+            link.addEventListener('mouseout', () => {
+                peekPreview.style.display = 'none';
+                peekIframe.src = '';
+            });
+        });
+    </script>
   </body>
 </html>
+
