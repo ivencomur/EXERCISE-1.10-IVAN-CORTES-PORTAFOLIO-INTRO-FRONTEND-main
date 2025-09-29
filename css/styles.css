@@ -149,42 +149,42 @@ a:not(.live-link):focus {
   display: block;
 }
 
-/* --- Smaller, Symmetrical & Adaptive Grid Styles --- */
+/* --- Standardized, Symmetrical & Adaptive Grid Styles --- */
 .work-main {
-  padding: 10px 0;
+  padding: 20px;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 700px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 5px;
+  gap: 20px;
 }
 
 /* Base style for all grid items */
 .grid > [class^="grid__item"] {
-  margin: 2px;
-  padding: 3px 4px;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease-in-out;
   flex-shrink: 0;
+  flex-grow: 1;
 }
 
 .grid > [class^="grid__item"] h2 {
-  font-size: 0.8em;
-  margin-bottom: 3px;
+  font-size: 1.1em;
+  margin-bottom: 8px;
 }
 
 .grid > [class^="grid__item"] p {
-  font-size: 0.5em;
-  line-height: 1.2;
+  font-size: 0.9em;
+  line-height: 1.4;
 }
 
 .grid > [class^="grid__item"]:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px);
 }
 
 /* Default Theme: Dark Blue Background, White Text */
@@ -200,7 +200,7 @@ a:not(.live-link):focus {
 .grid__item__5 h2 {
   color: var(--grid-item-text-color);
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 3px;
+  padding-bottom: 8px;
 }
 
 .grid__item__1 a,
@@ -208,7 +208,7 @@ a:not(.live-link):focus {
 .grid__item__5 a {
   color: var(--customized-orange-dark-bg);
   font-weight: bold;
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 
@@ -225,7 +225,7 @@ a:not(.live-link):focus {
 .grid__item__6 h2 {
   color: var(--alt-grid-item-text-color);
   border-bottom: 1px solid rgba(0, 86, 179, 0.2);
-  padding-bottom: 3px;
+  padding-bottom: 8px;
 }
 
 .grid__item__2 a,
@@ -233,7 +233,7 @@ a:not(.live-link):focus {
 .grid__item__6 a {
   color: var(--customized-orange-light-bg);
   font-weight: bold;
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 
@@ -411,24 +411,22 @@ a:not(.live-link):focus {
 }
 
 /* Media Queries for Symmetrical Layout */
-/* Default: 3 columns (for screens > 992px) */
+/* Desktop: 3 columns */
 .grid > [class^="grid__item"] {
-  width: calc(20% - 10px);
+  width: calc(33.333% - 20px);
 }
 
-/* Tablet: 2 columns (for screens <= 992px) */
+/* Tablet: 2 columns */
 @media all and (max-width: 992px) {
   .grid > [class^="grid__item"] {
-    width: calc(30% - 10px);
+    width: calc(50% - 20px);
   }
 }
 
-/* Mobile: 1 column (for screens <= 600px) */
+/* Mobile: 1 column */
 @media all and (max-width: 600px) {
   .grid > [class^="grid__item"] {
-    width: 90%;
-    margin-left: 0;
-    margin-right: 0;
+    width: 100%;
   }
 }
 
